@@ -15,16 +15,21 @@ class MainActivity :AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this, R.layout.activity_main
         )
-        val rclNames = findViewById<RecyclerView>(R.id.rclNames)
 
-        rclNames.setHasFixedSize(true)
+        binding.rclNames.setHasFixedSize(true)
 
         val nameList = getListOfNames()
+
+
+
         val namesAdapter = NameAdapter(nameList)
-        rclNames.adapter = namesAdapter
+        binding.rclNames.adapter = namesAdapter
 // Setting our RecyclerView's layout manager equal to LinearLayoutManager
-        rclNames.layoutManager = LinearLayoutManager(this)
-        rclNames.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        binding.rclNames.layoutManager = LinearLayoutManager(this)
+    //    rclNames.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+
+
+
       binding.btnUpdateList.setOnClickListener {
            nameList[nameList.size - 1] = "Hello! I've been updated right now :)"
           namesAdapter.notifyDataSetChanged()
